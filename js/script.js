@@ -1,9 +1,5 @@
-/* ==========================================================================
-   Granjeiros — comportamentos do site
-   ========================================================================== */
 'use strict';
 
-/* ----------------------------- DADOS ----------------------------- */
 const PROPERTIES = [
   {
     id:1, cat:'condominio', title:'Casa Contemporânea com Lazer Completo',
@@ -74,7 +70,6 @@ const CONDOS = [
   { name:'Quinta de São Fernando', tag:'Cotia', count:5, img:'https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=900&q=80&auto=format&fit=crop', infra:['Segurança 24h','Hípica','Lago','Clube'] },
 ];
 
-/* ----------------------------- ÍCONES ----------------------------- */
 const ICO = {
   area:'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#047857" stroke-width="1.7"><path d="M3 8V3h5M21 8V3h-5M3 16v5h5M21 16v5h-5"/></svg>',
   suite:'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#047857" stroke-width="1.7"><path d="M3 18v-5a2 2 0 012-2h14a2 2 0 012 2v5"/><path d="M3 18v2M21 18v2M6 11V8a2 2 0 012-2h8a2 2 0 012 2v3"/></svg>',
@@ -87,7 +82,6 @@ const ICO = {
 const heartSVG = a => `<svg width="18" height="18" viewBox="0 0 24 24" fill="${a?'#C9A24B':'none'}" stroke="${a?'#C9A24B':'#1E293B'}" stroke-width="1.8"><path d="M12 21s-7-4.5-9.5-9C.8 8.6 2.3 5 6 5c2 0 3.2 1.2 4 2.3C10.8 6.2 12 5 14 5c3.7 0 5.2 3.6 3.5 7-2.5 4.5-9.5 9-9.5 9z"/></svg>`;
 const badgeClass = t => t==='gold' ? 'badge-gold' : t==='graphite' ? 'badge-graphite' : 'badge-forest';
 
-/* ----------------------------- ESTADO ----------------------------- */
 const favorites = new Set();
 let currentModalId = null;
 let currentFilter = 'todos';
@@ -95,7 +89,6 @@ let currentFilter = 'todos';
 const $  = s => document.querySelector(s);
 const $$ = s => document.querySelectorAll(s);
 
-/* ----------------------------- RENDER: IMÓVEIS ----------------------------- */
 function renderProperties(){
   const grid = $('#propertyGrid');
   const list = currentFilter==='todos' ? PROPERTIES : PROPERTIES.filter(p=>p.cat===currentFilter);
@@ -124,7 +117,6 @@ function renderProperties(){
     </article>`;
   }).join('');
 
-  // cliques nos cards / favoritos
   grid.querySelectorAll('.card').forEach(card=>{
     card.addEventListener('click', e=>{
       if(e.target.closest('[data-fav]')) return;
@@ -136,7 +128,6 @@ function renderProperties(){
   });
 }
 
-/* ----------------------------- RENDER: CONDOMÍNIOS ----------------------------- */
 function renderCondos(){
   $('#condoGrid').innerHTML = CONDOS.map(c=>`
     <article class="condo reveal">
@@ -157,7 +148,6 @@ function renderCondos(){
   observeReveal();
 }
 
-/* ----------------------------- MODAL ----------------------------- */
 function openModal(id){
   const p = PROPERTIES.find(x=>x.id===id); if(!p) return;
   currentModalId = id;
@@ -195,7 +185,6 @@ function closeModal(){
   currentModalId = null;
 }
 
-/* ----------------------------- FAVORITOS ----------------------------- */
 function toggleFav(id){
   const p = PROPERTIES.find(x=>x.id===id);
   if(favorites.has(id)){ favorites.delete(id); }
@@ -206,7 +195,6 @@ function toggleFav(id){
   });
 }
 
-/* ----------------------------- TOAST ----------------------------- */
 let toastTimer;
 function toast(msg){
   const t = $('#toast');
@@ -216,7 +204,6 @@ function toast(msg){
   toastTimer = setTimeout(()=> t.classList.remove('show'), 2200);
 }
 
-/* ----------------------------- REVEAL ----------------------------- */
 let revealObserver;
 function observeReveal(){
   if(!revealObserver){
@@ -227,18 +214,15 @@ function observeReveal(){
   $$('.reveal:not(.in)').forEach(el=> revealObserver.observe(el));
 }
 
-/* ----------------------------- INIT ----------------------------- */
 document.addEventListener('DOMContentLoaded', ()=>{
   renderProperties();
   renderCondos();
   observeReveal();
 
-  // header scroll
   const header = $('#header');
   const onScroll = ()=> header.classList.toggle('scrolled', window.scrollY > 40);
   onScroll(); window.addEventListener('scroll', onScroll, { passive:true });
 
-  // menu mobile
   const nav = $('#nav'), toggle = $('#navToggle');
   toggle.addEventListener('click', ()=>{
     const open = nav.classList.toggle('open');
@@ -248,7 +232,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
     nav.classList.remove('open'); toggle.setAttribute('aria-expanded','false');
   }));
 
-  // seletor comprar/alugar
   $$('.seg-btn').forEach(b=>{
     b.addEventListener('click', ()=>{
       $$('.seg-btn').forEach(x=>{ x.classList.remove('active'); x.setAttribute('aria-selected','false'); });
@@ -256,7 +239,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
     });
   });
 
-  // filtros de imóveis
   $('#filters').addEventListener('click', e=>{
     const btn = e.target.closest('.pill'); if(!btn) return;
     $$('#filters .pill').forEach(x=>x.classList.remove('active'));
@@ -265,7 +247,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
     renderProperties();
   });
 
-  // modal: fechar
   $('#modal').addEventListener('click', e=>{
     if(e.target.closest('[data-close]')) closeModal();
     const action = e.target.closest('[data-action]');
@@ -277,7 +258,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
   });
   document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal(); });
 
-  // formulário de anúncio
   const form = $('#anuncioForm');
   form.addEventListener('submit', e=>{
     e.preventDefault();

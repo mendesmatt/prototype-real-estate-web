@@ -8,11 +8,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-<!-- ==================== HEADER ==================== -->
 <header class="site-header" id="header">
   <div class="container header-inner">
     <a href="#topo" class="brand" aria-label="Granjeiros, página inicial">
@@ -42,7 +41,6 @@
 
 <main id="topo">
 
-  <!-- ==================== HERO ==================== -->
   <section class="hero">
     <div class="hero-media">
       <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1600&q=80&auto=format&fit=crop" alt="Casa de alto padrão cercada de mata na Granja Viana" />
@@ -54,7 +52,6 @@
       <h1 class="hero-title">Seu refúgio de alto padrão,<br><span class="gold">cercado de mata nativa.</span></h1>
       <p class="hero-sub">Condomínios fechados, casas de luxo e terrenos selecionados por quem conhece cada rua da região há mais de duas décadas.</p>
 
-      <!-- Console de busca -->
       <div class="search-console">
         <div class="seg" role="tablist" aria-label="Comprar ou alugar">
           <button class="seg-btn active" data-seg="comprar" role="tab" aria-selected="true">Comprar</button>
@@ -108,7 +105,6 @@
     </div>
   </section>
 
-  <!-- ==================== FAIXA DE CONFIANÇA ==================== -->
   <section class="trust">
     <div class="container trust-grid">
       <div class="stat"><strong>20+</strong><span>anos na região</span></div>
@@ -118,7 +114,6 @@
     </div>
   </section>
 
-  <!-- ==================== IMÓVEIS EM DESTAQUE ==================== -->
   <section class="section" id="imoveis">
     <div class="container">
       <div class="section-head reveal">
@@ -134,11 +129,10 @@
         </div>
       </div>
 
-      <div class="cards" id="propertyGrid"><!-- render via JS --></div>
+      <div class="cards" id="propertyGrid"></div>
     </div>
   </section>
 
-  <!-- ==================== CONDOMÍNIOS ==================== -->
   <section class="section section-alt" id="condominios">
     <div class="container">
       <div class="section-head reveal">
@@ -148,11 +142,10 @@
           <p class="section-lead">Segurança, natureza e infraestrutura de clube a poucos minutos de São Paulo.</p>
         </div>
       </div>
-      <div class="condo-grid" id="condoGrid"><!-- render via JS --></div>
+      <div class="condo-grid" id="condoGrid"></div>
     </div>
   </section>
 
-  <!-- ==================== DIFERENCIAIS ==================== -->
   <section class="section" id="diferenciais">
     <div class="container feature-split">
       <div class="feature-media reveal">
@@ -184,7 +177,6 @@
     </div>
   </section>
 
-  <!-- ==================== ANUNCIAR ==================== -->
   <section class="section anunciar" id="anunciar">
     <div class="container anunciar-inner">
       <div class="anunciar-text reveal">
@@ -226,7 +218,6 @@
     </div>
   </section>
 
-  <!-- ==================== CORRETOR / SOBRE ==================== -->
   <section class="section section-alt" id="sobre">
     <div class="container about-split">
       <div class="about-text reveal">
@@ -254,7 +245,6 @@
     </div>
   </section>
 
-  <!-- ==================== CTA CONTATO ==================== -->
   <section class="cta" id="contato">
     <div class="container cta-inner reveal">
       <h2>Vamos encontrar o seu imóvel especial?</h2>
@@ -267,7 +257,6 @@
   </section>
 </main>
 
-<!-- ==================== FOOTER ==================== -->
 <footer class="footer">
   <div class="container footer-grid">
     <div class="footer-brand">
@@ -305,7 +294,6 @@
   </div>
 </footer>
 
-<!-- ==================== MODAL DE IMÓVEL ==================== -->
 <div class="modal" id="modal" aria-hidden="true">
   <div class="modal-backdrop" data-close></div>
   <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
@@ -345,6 +333,6 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="app.js"></script>
+<script src="js/script.js"></script>
 </body>
 </html>
